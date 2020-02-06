@@ -1,14 +1,36 @@
 require('dotenv');
 
+localPg = {
+  host: process.env.DATABASE_HOST,
+  database: process.env.DATABASE,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD
+}
+
 
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3'
+    client: 'pg',
+    connection: localPg,
+    migrations: {
+      directory: './database/migrations'
+    },
+    seeds: {
+      directory: './database/seeds/'
     }
   },
+
+  // testing: {
+  //   client: 'pg',
+  //   connection: testPg, 
+  //   migrations: {
+  //     directory: './database/migrations'
+  //   },
+  //   seeds: {
+  //     directory: './database/seeds'
+  //   },
+  // },
 
   staging: {
     client: 'postgresql',
