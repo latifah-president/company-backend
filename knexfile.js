@@ -1,4 +1,4 @@
-require('dotenv');
+require('dotenv').config();
 
 localPg = {
   host: process.env.DATABASE_HOST,
@@ -11,26 +11,15 @@ localPg = {
 module.exports = {
 
   development: {
-    client: 'pg',
+    client: 'postgres',
     connection: localPg,
     migrations: {
       directory: './database/migrations'
     },
     seeds: {
-      directory: './database/seeds/'
+      directory: './database/seeds'
     }
   },
-
-  // testing: {
-  //   client: 'pg',
-  //   connection: testPg, 
-  //   migrations: {
-  //     directory: './database/migrations'
-  //   },
-  //   seeds: {
-  //     directory: './database/seeds'
-  //   },
-  // },
 
   staging: {
     client: 'postgresql',
